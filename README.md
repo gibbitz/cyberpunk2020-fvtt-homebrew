@@ -17,7 +17,7 @@ More notes on non-RAW rules can be found [here](HOMEBREW.md) and will be updated
 ## Getting Started
 
 ### Downloading
-If you have no interest in developing on this platform, the system itself can be found in this repository at `bin/cyberpunk2020-homebrew`. Bundles will be available as releases when ready.
+If you have no interest in developing on this platform, the system itself can be found in this repository at `bin/cyberpunk2020-homebrew`. Bundles are available for download on [the releases page](https://github.com/gibbitz/cyberpunk2020-fvtt-homebrew/releases).
 
 ### Installing
 See releases to download the system folder zip. Alternatively, if you are a self starter/developer you can build the application following the directions below

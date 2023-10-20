@@ -1,19 +1,21 @@
 {
   "name": "cyberpunk2020-homebrew",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Homebrew adapted system for FoundryVTT of R. Talsorian Games' classic Cyberpunk 2020 TTRPG.",
   "main": "system.json",
   "watch": {
-    "dev:html": {
-      "patterns": [
-        "./src/**"
-      ],
-      "extensions": "pug, js, json"
+    "copy": {
+      "patterns": "src/**",
+      "ignore": ["src/scss/**", "src/data/**"],
+      "extensions": "*"
     },
-    "build:data": "./src/data/*.{js,json}",
+    "build:data": {
+      "patterns": "./src/data/**.*",
+      "extensions": "*"
+    },
     "build:css": {
       "patterns": [
-        "./src/**"
+        "./src/scss/**"
       ],
       "extensions": "scss"
     }
@@ -23,9 +25,9 @@
     "build:data": "node scripts/build-data.js",
     "build:css": "sass --source-map src/scss/cyberpunk2020.scss bin/cyberpunk2020-homebrew/css/cyberpunk2020.css",
     "build:css:release": "sass --no-source-map --style=compressed src/scss/cyberpunk2020.scss bin/cyberpunk2020-homebrew/css/cyberpunk2020.css",
-    "build": "run-p build:data build:css:release copy",
-    "clean": "rimraf bin/cyberpunk2020-homebrew/**",
-    "copy": "cpy src/** !src/scss !src/data bin/cyberpunk2020-homebrew",
+    "build": "run-s clean copy build:data build:css:release",
+    "clean": "rimraf bin/cyberpunk2020-homebrew",
+    "copy": "cd src && cpy ** !scss !data ../bin/cyberpunk2020-homebrew && cd -",
     "watch": "npm-watch"
   },
   "repository": {

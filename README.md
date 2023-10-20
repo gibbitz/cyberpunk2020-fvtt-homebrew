@@ -1,47 +1,68 @@
-# cyberpunk2020 (for FoundryVTT)
-*Finally on 0.8.6! ...hopefully v9 now too!*
-**A note on dev time: For the past while, I've had enough going on that this has been on the backburner. I'm now taking time off from those other things to recover, but don't know how much time I'll be throwing at CP2020. Will still try to address bugs when my brain cooperates, and fingers crossed this situation changes.**
+# Cyberpunk 2020 Homebrew (System for FoundryVTT)
 
-R. Talsorian Games' [Cyberpunk 2020](https://talsorianstore.com/products/cyberpunk-2020) system, but for FoundryVTT. Time to get chromed, and frag some slags.
+## WIP
+> Right now this document is more of a target state than a current one.
 
-![image](https://user-images.githubusercontent.com/6842867/115111007-0f80f900-9f76-11eb-8b42-7f6b6682a6a3.png) ![image](https://user-images.githubusercontent.com/6842867/115111021-26bfe680-9f76-11eb-93ee-7cf42d44190f.png)
+A Homebrew adapted system for FoundryVTT of R. Talsorian Games' classic [Cyberpunk 2020](https://talsorianstore.com/products/cyberpunk-2020) TTRPG.
 
-I believe this is now ready to reasonably run games in without anything particularly fundamental missing (minus, at the moment, custom skills).
-Here's the gist of what's there so far:
+## Cyberpunk 2020
+Cyberpunk 2020 is a table top roleplaying game system developed by [R Talisorian Games](https://rtalsoriangames.com/cyberpunk) and released in 1990 that evolved from the Cyberpunk RPG released in 1988 based on the sci-fi genre popularized by authors like William Gibson, Bruce Sterling and Walter Jon Williams and films like _Blade Runner_ and _The Terminator_. Cyberpunk 2020 featured improved combat rules and updated and expanded equipment and skills. The rule system focuses on Comparisons of randomized character based values (_rolls_) against  difficulty levels or other character's rolls in order to determine the acomplishments of players. Compared to other systems this combination of attributes, skill and chance combined with the adversarial direction of combat aligned with my worldview better than percentage based rule systems (_Top Secret SI_) or D20 systems (_Dungeons & Dragons_, Palladiums games) and made the game popular in this space.
 
-* A character sheet with stats, damage tracking, gear, combat tab, searchable skills, and cyberware.
-  * Cyberware does not currently affect stats - it will probably involve working with Active Effects, but no promises, as I have no idea how to implement that framework yet.
-* Consistent design reminiscent of the Core Rulebook, with UI design and user experience taken into heavy consideration.
-* Skills as items, sortable by either name or stat. Full tracking of chipped/unchipped, IP, etc. Rollable.
-  * Skills with points are shown first
-* Stopping power and encumbrance tracked for armor.
-  * SP is currently just added together for each equipped piece of armor. Proportional armor will come later.
-* Ranged attacks for single shots, as well as three-round burst and autofire for automatic weapons.
-* Easy modifier selection when making ranged attacks.
-* A start of cyberpunk's melee system
+## Sipping the Homebrew...
+Having started playing Cyberpunk(2013) in 1989, my players and I felt like this game hit a homerun with it's opposed rolls and simple dice on top of its well developed setting. We continued to play under  2020 rules with some rules appended from 2013 in the 90s and eventually moved away from gaming. The release of Cyberpunk2077 drew us back to the game and with the release of Cyberpunk Red we adapted our rules and went back to this mostly 2020 ruleset. 
 
-Yet to come:
-* Ammo expenditure and reloads easily doable from chat messages.
-* Attack hit roll automatically translating to the name of the hit location.
-* Target selection for attacks.
-* Martial arts key moves
-* Template area selection for area attacks
-* Netrunning: Please dear gods, I've not used it in a campaign so it's a little far down my list
-* Mech sheet: Yes this will come Ste, likely after Okay Weapon Rolls and the combat tab.
+In general I'm a bit of a simulationist when it comes to rules. I like the rules to work more like physics than a board game and I feel that Cyberpunk Red goes a little too far toward a board game. I understand that this is the direction that TTRPGs have gone in the past 30 years. I see a lot of new players who picked up this game in 2019/2020 complaining about crunch in the the game system. As a defender of the system, I feel obligated to make it easier to play without overly gamifying it. Having a VTT do all the calculations for you is the perfect way to do this.
 
-All rights to Cyberpunk 2020 lie with R. Talsorian games. Under their [homebrew content policy](https://rtalsoriangames.com/homebrew-content-policy/), any compendium produced with this will likely only be the statistical summaries of items, equivalent to the rows in the weapon table, without R. Talsorian's descriptive text. There will not be any stat blocks for monsters, NPCs, or hazards.
+More notes on non-RAW rules can be found [here](HOMEBREW.md) and will be updated as they are included in the system. 
+## Getting Started
 
-Happy to take any feedback; feel free to add issues or to make a PR :)
+### Downloading
+If you have no interest in developing on this platform, the system itself can be found in this repository at `bin/cyberpunk2020-homebrew`. Bundles will be available as releases when ready.
 
-## Development notes
-Please feel free to contribute! Whether by raising issues you find during play, requesting features, or contributing yourself, all is appreciated :) 
-This project uses Sass - please edit the .scss files instead of the .css files.
+### Installing
+See releases to download the system folder zip. Alternatively, if you are a self starter/developer you can build the application following the directions below
 
-### How to build
-At the moment, this project only requires running `sass --watch scss/cyberpunk2020.scss css/cyberpunk2020.css` in the project's folder as you develop - this will auto-compile the scss as you make edits.
+> A note about the commands in this guide: All the example scripts here are for *nix platforms (Linux/macOS). Using [Windows Subsystem For Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) or a bash emulator, these commands can work on Windows as well. Mileage may vary. 
 
-### Recent repo url change
-It used to be this repo was called `cyberpunk2020-foundry`, and you'd have to change the folder name after cloning. Not anymore! But due to the rename, if you had the repo, you'll likely want to run `git remote set-url origin git@github.com:OctarineSourcerer/cyberpunk2020.git` to make sure your repo points to the rename (I don't know how long old versions will link to it).
+### Development
+This project builds source files from `/src` into the `bin/cyberpunk2020-homebrew` folder using nodejs. This directory is gitignored here to disuade uptakers from editing these files because running `npm run build` *will delete them*
 
-### Time I have
-The amount I can do for this repo goes up and down sometimes, so don't be particularly worried if some couple-week gaps happen. Just means I'm a little busy :)
+if you are not using nodejs on your system, I recomend using [NVM](https://github.com/nvm-sh/nvm) to install it. This project was developed using node v18. Follow the instructions to use NVM to install it.
+
+Once node is installed you will want to navigate to the project root folder and install dependencies for the build system with:
+```bash
+npm i
+```
+#### Watching files
+Once these are installed you can run the project locally in watch mode where node will look for changes in your HTML, SCSS and JS and bundle them into the `bin/cyberpunk2020-homebrew` folder.
+
+To see immediate results in your local development, I would recommend symbolic linking this folder in your Foundry vtt `/Data/systems/` folder as `cyberpunk2020-homebrew`. Without this step you will need to manually copy the system folder into your Foundry installation every time you build (a total hassle).
+```bash
+ln -s bin/cyberpunk2020-homebrew [PATH_TO_FOUNDRY]/Data/systems/cyberpunk2020-homebrew
+```
+where `[PATH_TO_FOUNDRY]` is the local path to your foundry installation.
+
+Once this is set up you should be able to run
+```bash
+npm run watch
+```
+and you should see the changes you make in your vtt. This may require refresh, but I'll look into a hot-reload option if not.
+
+#### How to Build
+To bundle the system for release (or just to build it without watch) run:
+```bash
+npm run build
+```
+
+
+## Contributing
+Please feel free to fork this repository or [the excellent source for this repository](https://github.com/OctarineSourcerer/cyberpunk2020). 
+PRs are welcome, but be aware that this repository is a reflection of my personal homebrewing that involves a combination of cherry picked rules from Cyberpunk 2013, 2020 2e and Red. PRs may not be accepted if they interfere with my approach, but you are free to raise them if you think they will help or fix a fundamental problem. 
+Issues are always welcome. I often will accept warts in my own software that could confuse or irritate others -- full disclosure: I'm not the best QA.
+
+## Credit and Attribution
+All rights to Cyberpunk 2013/2020/Red lie with R. Talsorian games. Under their [homebrew content policy](https://rtalsoriangames.com/homebrew-content-policy/), any compendium produced with this will likely only be the statistical summaries of items, equivalent to the rows in the weapon table, without R. Talsorian's descriptive text.
+
+Additional content included via [datafortress2020](http://datafortress2020.com/) maintained by Deric Bernier.
+
+This repository was started with a fork from [OctarineSourcerer's cyberpunk2020 repository](https://github.com/OctarineSourcerer/cyberpunk2020). As ths is the first Foundry module the legwork done upstream was indespensable.

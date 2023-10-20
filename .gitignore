@@ -1,4 +1,8 @@
+# ignoring lock file for now
 package-lock.json
+
+# ignore build products
+bin/
 
 # IDE
 .idea/
